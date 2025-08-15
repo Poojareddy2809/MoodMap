@@ -25,4 +25,4 @@ It allows users to:
 - **TailwindCSS** (via CDN)
 - **JavaScript (Vanilla)**
 - **python**
-## 📂 Project Structure
+
