@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Assessment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl mx-auto">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="card text-center">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Mental Health Check-in</h1>
+            <p class="text-gray-600 mb-6">Let's start by understanding how you're feeling right now.</p>
+            <textarea id="feeling-input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="In a few words, describe how you are feeling today..."></textarea>
+            <p id="feeling-error" class="text-red-500 text-sm mt-2 hidden">Please describe your feelings before continuing.</p>
+            <button id="start-quiz-btn" class="btn btn-primary w-full mt-4">Analyze Feelings & Start Quiz</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="card hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-gray-800">Self-Assessment Quiz</h2>
+                <p class="text-gray-600 font-medium"><span id="question-counter">1</span> / 10</p>
+            </div>
+            <p id="question-text" class="text-lg text-gray-700 mb-6"></p>
+            <div id="choices-container"></div>
+            <p id="quiz-error" class="text-red-500 text-sm mt-2 hidden">Please select an option to continue.</p>
+            <button id="next-question-btn" class="btn btn-primary w-full mt-4">Next</button>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="card hidden text-center">
+            <div id="loading-spinner" class="flex justify-center items-center mb-4">
+                <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="text-lg text-gray-700">Analyzing your results...</p>
+            </div>
+            <div id="results-content" class="hidden">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">Assessment Summary</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left my-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-gray-700">Detected Emotion</h3>
+                        <p id="detected-emotion" class="text-2xl font-bold text-indigo-600"></p>
+                        <p id="emotion-confidence" class="text-sm text-gray-500"></p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-gray-700">Quiz Score</h3>
+                        <p id="quiz-score" class="text-2xl font-bold text-indigo-600"></p>
+                    </div>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg text-left">
+                    <h3 class="font-semibold text-gray-800 text-lg mb-2">Mental Health Status: <span id="mental-status" class="font-bold"></span></h3>
+                    <p id="recommendation" class="text-gray-700"></p>
+                </div>
+                <p class="text-xs text-gray-500 mt-6">Disclaimer: This is not a medical diagnosis. If you are in distress, please consult a mental health professional.</p>
+                <button id="restart-btn" class="btn btn-primary w-full mt-6">Take Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
